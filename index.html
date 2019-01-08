@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Weight Convertor</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <style>
+        body {
+            margin-top: 80px;
+            background: #323438;
+            color: #f9f9ff
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="display-4 text-center mb-3">Weight Convertor</h1>
+                <div class="mx-auto mb-3">
+                    <form class='form-inline form-row'>
+                        <div class="form-group col-6">
+                            <input id='allInput' type="number" class='form-control' placeholder="Enter your weight">
+                        </div>
+                        <div class="form-group col-6">
+                            <select class="custom-select" id='selectV'>
+                                <option selected>Select Unit</option>
+                                <option value="kg">kg</option>
+                                <option value="lbs">lbs</option>
+                                <option value="oz">oz</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div id="output1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('output1').style.visibility = 'hidden'
+        document.getElementById('selectV').addEventListener("change", function (e) {
+
+            let selectvalue = e.target.value;
+            if (selectvalue == 'kg') {
+                document.getElementById('output1').style.visibility = 'visible'
+                document.getElementById('allInput').addEventListener('input', function (e) {
+
+                    let allValue = e.target.value
+
+                    document.getElementById('output1').innerHTML = '<div class="card bg-primary mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Pound:</h4>' +
+                        '<div class="card-text" id="lbsoutput">' + allValue * 2.2046 + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="card bg-success mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Gram:</h4>' +
+                        '<div class="card-text" id="grmoutput">' + allValue * 1000 + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="card bg-info mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Ounce:</h4>' +
+                        '<div class="card-text" id="ozoutput">' + allValue * 35.274 + '</div>' +
+                        '</div>' +
+                        '</div>'
+                })
+            } else if (selectvalue == 'lbs') {
+                document.getElementById('output1').style.visibility = 'visible'
+                document.getElementById('allInput').addEventListener('input', function (e) {
+
+                    let allValue = e.target.value
+
+                    document.getElementById('output1').innerHTML = '<div class="card bg-primary mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Kilogram:</h4>' +
+                        '<div class="card-text">' + allValue / 2.2046 + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="card bg-success mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Gram:</h4>' +
+                        '<div class="card-text" id="grmoutput">' + allValue / 0.0022046 + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="card bg-info mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Ounce:</h4>' +
+                        '<div class="card-text" id="ozoutput">' + allValue * 16 + '</div>' +
+                        '</div>' +
+                        '</div>'
+                })
+            } else if (selectvalue == 'oz') {
+                document.getElementById('output1').style.visibility = 'visible'
+                document.getElementById('allInput').addEventListener('input', function (e) {
+
+                    let allValue = e.target.value
+
+                    document.getElementById('output1').innerHTML = '<div class="card bg-primary mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Pound:</h4>' +
+                        '<div class="card-text">' + allValue * 0.0625 + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="card bg-success mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Kilogram:</h4>' +
+                        '<div class="card-text" id="grmoutput">' + allValue / 35.274 + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="card bg-info mb-3 text-center">' +
+                        '<div class="card-body card-title">' +
+                        '<h4>Gram:</h4>' +
+                        '<div class="card-text" id="ozoutput">' + allValue / 0.035274 + '</div>' +
+                        '</div>' +
+                        '</div>'
+                })
+            }
+        })
+
+
+
+
+    </script>
+
+</body>
+
+</html>
